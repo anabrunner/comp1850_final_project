@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <title>Home | Sugar & Spice</title>
+
+  <!--COMP 1850 Final Project - Ana Brunner-->
+  <style>
+    .main_box {
+      max-width: 1000px;
+    }
+
+    .main_box p {
+      margin-bottom: 20px;
+    }
+
+    .cupcake_img {
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      /* Allows image to resize down in smaller screens to avoid side scroll */
+      .cupcake_img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+
+  <script>
+    //This function is for the media query to change the nav bar
+    function menuFunction() {
+      let x = document.getElementById("hidden_links");
+      if (x.className === "links") {
+        x.className += " responsive";
+      } else {
+        x.className = "links";
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <header>About us</header>
+
+  <nav>
+    <img class="logo" src="images/logo.jpg" alt="Sugar & Spice Logo" width="200" height="130">
+    <img class="logo_mobile" src="images/logo_mobile.jpg" alt="Sugar & Spice Logo" width="243" height="49">
+    <div id="hidden_links" class="links">
+      <a class="active" href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact us</a>
+      <a href="account.html">Account</a>
+      <a href="cite.html">Cite</a>
+    </div>
+    <img class="burger_menu" src="images/burger_menu.jpg" alt="Menu icon" width="61" height="49" onclick="menuFunction()">
+  </nav>
+
+  <main>
+    <div class="main_box">
+      <p><img class="cupcake_img" src="images/cupcakes.jpg" alt="cupcakes" width="400" height="600">Since Sugar & Spice was founded in 2017, our mission has been to bring smiles to faces and create memorable experiences through our baked delights. Our talented team of bakers combine time-honored recipes with a dash of creativity, resulting in a menu that caters to every palate and occasion. From the comforting aroma of freshly baked bread in the morning to the sweet celebration of custom cakes for special events, our bakery embodies the spirit of warmth, hospitality, and culinary excellence.</p>
+      <p>Come visit our shop to browse our daily selection of freshly baked goods, or place an <a href="shop.html">online order</a> to pick up in store!</p>
+      <p>We also do catering for large events such as weddings, birthday parties, and corporate events. Visit our <a href="contact.html">contact us</a> page to request a quote.</p>
+      <p>Visit us often? Consider creating an <a href="account.html">account</a> to earn sweet points and easily re-order your favorites!</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>COMP 1850 Final Project - Ana Brunner | Visit the <a href="cite.html">Cite</a> page for a full list of content attributions.</p>
+  </footer>
+</body>
+</html>

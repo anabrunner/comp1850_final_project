@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <title>Cite | Sugar & Spice</title>
+
+  <!--COMP 1850 Final Project - Ana Brunner-->
+  <style>
+    dt {
+      font-weight: bold;
+    }
+    
+    dd {
+      margin: 10px 40px;
+    }
+  </style>
+
+  <script>
+    //To ensure script will only run when DOM finishes loading
+    document.addEventListener("DOMContentLoaded", () => {
+      //Gets elements with class name 'accordion', this returns an array
+      var acc = document.getElementsByClassName('accordion');
+      //This variable is to iterate through array in the for loop
+      var i;
+      //Iterates through array from i=0 to i<length of array (zero-indexed), incrementing i each loop
+      for (i = 0; i < acc.length; i++) {
+        //Adds click event listener to each element with accordion class name and runs function if clicked
+        acc[i].addEventListener("click", function() {
+          //If function runs toggles to accordion_active (renamed this from original tutorial since nav buttons have active class)
+          this.classList.toggle("accordion_active");
+          //Assigns next element sibling to var panel (in this case the div with class panel)
+          var panel = this.nextElementSibling;
+          //Checks if display is currently set to block and if yes changes to none, else changes to block
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    });
+
+    //This function is for the media query to change the nav bar
+    function menuFunction() {
+      let x = document.getElementById("hidden_links");
+      if (x.className === "links") {
+        x.className += " responsive";
+      } else {
+        x.className = "links";
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <header>Cite</header>
+
+  <nav>
+    <img class="logo" src="images/logo.jpg" alt="Sugar & Spice Logo" width="200" height="130">
+    <img class="logo_mobile" src="images/logo_mobile.jpg" alt="Sugar & Spice Logo" width="243" height="49">
+    <div id="hidden_links" class="links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact us</a>
+      <a href="account.html">Account</a>
+      <a class="active" href="cite.html">Cite</a>
+    </div>
+    <img class="burger_menu" src="images/burger_menu.jpg" alt="Menu icon" width="61" height="49" onclick="menuFunction()">
+  </nav>
+
+  <main>
+    <div class="requirements">
+      <h1>Project requirements</h1>
+      <button class="accordion">Responsive design</button>
+      <div class="panel">
+        <dl>
+          <dt>Burger menu and page layout overhaul with @media query</dt>
+            <dd>A @media query with a breakpoint at 768px was used to change the page layout from a side navigation menu to a burger menu at the top. The breakpoint of 768px was chosen because this is a common breakpoint between small laptop screens and phones or tablets. To improve navigation at smaller screens, the logo also changes to a narrower version of the logo to prevent too much space being taken up at the top of the screen. JavaScript was used to toggle the burger menu open and closed.</dd>
+          <dt>CSS Grid rearrangement with @media query</dt>
+            <dd>For the Shop and Account pages, responsive design was implemented by simply changing the grid-template-areas or grid-template-columns to a more narrow mobile layout. This fixes the layout without requiring too many extra lines of code.</dd>
+          <dt>Element resizing with and without @media query</dt>
+            <dd>Images are allowed to size down (except for logo images) throughout the website by just setting a max height. This combined with native CSS Grid for other elements maintained good responsiveness of the webpage for the range of screen sizes above or below the media query breakpoint. The submenu in the Shop page was explicitly sized down by reducing margins and paddings with the media query breakpoint.</dd>
+        </dl>
+      </div>
+      <button class="accordion">Interactivity</button>
+      <div class="panel">
+        <dl>
+          <dt>Back to top button</dt>
+            <dd>In the Shop page, a "Back to Top" button appears when the user begins scrolling down. This was implemented using window.onscroll event to trigger a function that displays the button if the user scrolls 20px or more down the page.</dd>
+          <dt>Pop up alerts to simulate functionality</dt>
+            <dd>In the Shop page, clicking on any "Add to cart" button triggers a pop up alert confirming that the item has been added to the user's cart. This was implemented with a JavaScript function with onclick event. In the Account page, clicking on "Log out" or "Re-order" also triggers a confirmation message.</dd>
+          <dt>Sub-menu to skip to a subsection of the page</dt>
+            <dd>Native HTML. In the Shop page, the user can skip directly to a section of the catalogue using a sub-menu at the top of the page.</dd>
+          <dt>Accordions</dt>
+            <dd>Contact us and Cite (this) page have accordions implemented using JavaScript to show or hide sections.</dd>
+          <dt>Profile picture change</dt>
+            <dd>In the Account page, user can select a different profile picture from a drop down menu. The profile picture instantly updates upon a selection (as a form of "preview").</dd>
+          <dt>JavaScript to check/confirm changes</dt>
+            <dd>In the Account page, clicking the "Save" button on either the subscription or the profile picture section will trigger a function that checks if something has actually been selected. If it has, it displays a confirmation that changes were saved, but if nothing is selected then it prompts the user to pick something.</dd>
+        </dl>
+      </div>
+      <button class="accordion">Forms</button>
+      <div class="panel">
+        <dl>
+          <dt>Contact us page - Get a free quote form</dt>
+            <dd>This form has many fields and simulates a customer requesting a quote for a large order or catering to an event. Fields are organized in fieldsets, and include basic customer information such as name, email, and phone number; order details with checkboxes, drop down selection, and text area; and a pick up and payment section with radio buttons, and date and time selectors. Native CSS validation was used for the email, phone, and date and time fields. Some forms were also marked as "required" using CSS, which does not allow the user to submit without filling them in. The form echoes back the inputs using the modified PHP program from Assignment 7.</dd>
+          <dt>Account page - Manage your subscriptions form</dt>
+            <dd>This form has only two radio buttons, however it also echoes the response using the modified PHP program. Furthermore, this form is using JavaScript to validate whether a selection was made when the "Save" button is clicked.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="citations">
+      <h1>Citations</h1>
+      <button class="accordion">Images, color palette, and fonts</button>
+      <div class="panel">
+        <dl>
+          <dt>Logo and color palette</dt>
+            <dd>Logo by <a href="https://manage.wix.com/logo/maker/esh/?companyName=Dream%20&referralAdditionalInfo=arenaSplitPage" target="_blank">Wix Logo Maker</a></dd>
+            <dd>Color palette extracted from logo using <a href="https://imagecolorpicker.com/en" target="_blank">Image Color Picker</a></dd>
+          <dt>Home page</dt>
+            <dd>Cupcakes by <a href="https://www.pexels.com/photo/cupcakes-on-a-cake-stand-10585075/" target="_blank">Abdelmoughit Lahbabi</a></dd>
+          <dt>Shop page</dt>
+            <dd>Chocolate cupcake by <a href="https://commons.wikimedia.org/wiki/File:Chocolate_Choco_Cup-Cake.png" target="_blank">CakieBakie</a></dd>
+            <dd>Raspberry cupcake by <a href="https://pixahive.com/photo/beautiful-cupcake/" target="_blank">Soham</a></dd>
+            <dd>Strawberry cupcake by <a href="https://pixabay.com/photos/cupcakes-muffins-dessert-sweet-5441972/" target="_blank">defremyan</a></dd>
+            <dd>Chocolate chip cookies by <a href="https://commons.wikimedia.org/wiki/File:Cookie_stack.jpg" target="_blank">Lisa Fotios</a></dd>
+            <dd>M&M Cookies by <a href="https://www.pexels.com/photo/cookies-with-m-m-s-toppings-on-a-white-surface-14133150/" target="_blank">Marcia Salido</a></dd>
+            <dd>Red Velvet Cookies by <a href="https://www.pexels.com/photo/stacks-of-red-velvet-cookies-in-close-up-photography-14133143/" target="_blank">Marcia Salido</a></dd>
+            <dd>Macaron Cake by <a href="https://www.pexels.com/photo/close-up-shot-of-a-cake-with-frosting-4699096/" target="_blank">Caramelle Gastronomia</a></dd>
+            <dd>Two tier cake by <a href="https://www.pexels.com/photo/white-two-layer-cake-with-roses-11845551/" target="_blank">Вадим Биць</a></dd>
+            <dd>Oreo Cheesecake by <a href="https://www.pexels.com/photo/oreo-cheesecake-on-a-plate-13922385/" target="_blank">Angela Khebou</a></dd>
+            <dd>Triple Chocolate Cake by <a href="https://www.pexels.com/photo/chocolate-cake-with-white-icing-5276663/" target="_blank">Dhaya Eddine Bentaleb</a></dd>
+            <dd>Macarons by <a href="https://www.pexels.com/photo/close-up-shot-of-macarons-8873318/" target="_blank">lsil</a></dd>
+            <dd>Donut by <a href="https://www.pexels.com/photo/close-up-photo-of-donuts-2955820/" target="_blank">Nishant Aneja</a></dd>
+          <dt>Account page</dt>
+            <dd>Fish clipart from <a href="https://creazilla.com/nodes/3156208-fish-clipart" target="_blank">Creazilla</a></dd>
+            <dd>Dalmatian dog clipart from <a href="https://creazilla.com/nodes/10469-dalmatian-dog-clipart" target="_blank">Creazilla</a></dd>
+            <dd>Hamster clipart from <a href="https://creazilla.com/nodes/7807823-hamster-clipart" target="_blank">Creazilla</a></dd>
+          <dt>Fonts</dt>
+            <dd>Playfair Display Regular 400 used throughout the whole website.</dd>
+        </dl>
+      </div>
+      <button class="accordion">Code resources</button>
+      <div class="panel">
+        <dl>
+          <dt>Fonts</dt>
+            <dd><a href="https://www.w3docs.com/snippets/css/how-to-import-google-fonts-in-css-file.html" target="_blank">How to Import Google Fonts in CSS File</a> for a tutorial on using @import for different Google fonts.</dd>
+          <dt>CSS Grid</dt>
+            <dd><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">A Complete Guide to CSS Grid</a> for a general reference of different properties and terminology used in CSS Grid.</dd>
+            <dd><a href="https://www.quackit.com/css/grid/tutorial/create_a_website_layout.cfm" target="_blank">Create a Website Layout with CSS Grid</a> for a tutorial on how to build a website layout such as the one used in this project.</dd>
+            <dd><a href="https://webdesign.tutsplus.com/how-to-build-web-form-layouts-with-css-grid--cms-28776t" target="_blank">How to Build Web Form Layouts with CSS Grid</a> for a tutorial on using CSS Grid to style and layout a web form such as the one used in the Contact us page of this website.</dd>
+            <dd><a href="https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-grid/" target="_blank">Responsive Layouts Using CSS Grid</a> for a walkthrough of how CSS Grid can be used to build responsive web pages without using media queries. In particular, this resource was used for the explanation on the auto-fit property which was used to layout the checkboxes in the Contact us page.</dd>
+          <dt>JavaScript</dt>
+            <dd><a href="https://www.tutorialsteacher.com/javascript/display-popup-message-in-javascript" target="_blank">TutorialsTeacher: JavaScript Message Boxes</a>, for an explanation on the differences between the different JavaScript pop up message boxes.</dd>
+            <dd><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top" target="_blank">W3 Schools Sandbox: How to scroll back to top button</a>. This sandbox was used to build the back to top button found in the Shop page.</dd>
+            <dd><a href="https://www.freecodecamp.org/news/javascript-document-ready-jquery-example/" target="_blank">freeCodeCamp: How to Use the DOMContentLoaded Event in JavaScript</a>. Used this resource to fix an issue with scripts mot working properly if loading before DOM, by wrapping the script with an event listener that checks that the DOM is loaded. This was necessary in the Shop, Contact us, and Cite (this) pages since they have functions that are not just triggered by clicking a button.</dd>
+            <dd><a href="https://www.w3schools.com/howto/howto_js_accordion.asp" target="_blank">W3 Schools tutorial</a> for making the accordion in the Contact us and Cite (this) page using JavaScript.</dd>
+            <dd><a href="https://www.w3schools.com/js/tryit.asp?filename=tryjs_lightbulb" target="_blank">W3 Schools JavaScript - Light Bulb Sandbox</a>, for changing the profile picture in the Account page.</dd>
+            <dd><a href="https://itecnote.com/tecnote/javascript-changing-image-with-dropdown-menu/" target="_blank">iTecNote: JavaScript - Changing image with dropdown menu</a>. This question helped me figure out how to get a value from a dropdown menu using JavaScript in order to be able to change the profile picture in the Account page.</dd>
+            <dd><a href="https://stackoverflow.com/questions/1423777/how-can-i-check-whether-a-radio-button-is-selected-with-javascript" target="_blank">StackOverflow</a>. This thread helped me figure out how to write a function to check if a radio button had been selected in the Account page.</dd>
+            <dd><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_topnav" target="_blank">W3 Schools Responsive Top Navigation</a>. Used this source to figure out the JavaScript function to make the navigation menu change into a burger menu for smaller screens.</dd>
+          <dt>Other code related resources</dt>
+            <dd><a href="https://www.w3docs.com/snippets/html/how-to-create-an-anchor-link-to-jump-to-a-specific-part-of-a-page.html" target="_blank">W3 Docs</a>: How to add an anchor link to jump to a specific part of a page. This was used for making the sub-menu in the Shop page which helps the user quickly find what they want in the catalogue.</dd>
+            <dd><a href="https://testsigma.com/blog/css-breakpoints/" target="_blank">Testsigma</a>: What are CSS breakpoints and media query breakpoints [2022 UPDATED]. Used this article to choose my media query breaking point of 768px since it is a common breaking point between laptop and tablet/phone.</dd>
+        </dl>
+      </div>
+    </div>    
+  </main>
+
+  <footer>
+    <p>COMP 1850 Final Project - Ana Brunner | Visit the <a href="cite.html">Cite</a> page for a full list of content attributions.</p>
+  </footer>
+</body>
+</html>

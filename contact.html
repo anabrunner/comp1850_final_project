@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <title>Contact us | Sugar & Spice</title>
+
+  <!--COMP 1850 Final Project - Ana Brunner-->
+  <style>
+    /*CSS for the form */
+    .customer_info, .order_details, .form_item, .order_checkbox, .quote_button {
+      display: grid;
+    }
+    
+    .customer_info input, .customer_info label, select, .pickUpPayment input {
+      margin: 5px;
+      padding: 5px;
+    }
+
+    fieldset, .radio_buttons, .dateTime, textarea, .order_checkbox {
+      margin: 10px;
+    }
+
+    .quoteform {
+      max-width: 800px;
+      margin: auto;
+      color: #374d62;
+    }
+
+    fieldset {
+      background-color: #e9e5df;
+      padding: 10px 30px 15px 15px;
+    }
+
+    .customer_info, .order_details {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .customer_info input, textarea {
+      width: 100%;
+    }
+
+    .customer_info label {
+      display: block;
+    }
+
+    .form_item, textarea {
+      grid-column: 1 / 3;
+    }
+
+    select {
+      max-width: 200px;
+    }
+
+    .order_checkbox {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    legend {
+      font-size: 18rem;
+      font-weight: 700;
+    }
+
+    .quoteform textarea {
+      padding: 10px;
+      resize: none;
+    }
+
+    .quote_button button {
+      justify-self: center;
+    }
+  </style>
+
+  <script>
+    //To ensure script will only run when DOM finishes loading
+    document.addEventListener("DOMContentLoaded", () => {
+      //Gets elements with class name 'accordion', this returns an array
+      var acc = document.getElementsByClassName('accordion');
+      //This variable is to iterate through array in the for loop
+      var i;
+      //Iterates through array from i=0 to i<length of array (zero-indexed), incrementing i each loop
+      for (i = 0; i < acc.length; i++) {
+        //Adds click event listener to each element with accordion class name and runs function if clicked
+        acc[i].addEventListener("click", function() {
+          //If function runs toggles to accordion_active (renamed this from original tutorial since nav buttons have active class)
+          this.classList.toggle("accordion_active");
+          //Assigns next element sibling to var panel (in this case the div with class panel)
+          var panel = this.nextElementSibling;
+          //Checks if display is currently set to block and if yes changes to none, else changes to block
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    });
+    //This function is for the media query to change the nav bar
+    function menuFunction() {
+      let x = document.getElementById("hidden_links");
+      if (x.className === "links") {
+        x.className += " responsive";
+      } else {
+        x.className = "links";
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <header>Contact us</header>
+
+  <nav>
+    <img class="logo" src="images/logo.jpg" alt="Sugar & Spice Logo" width="200" height="130">
+    <img class="logo_mobile" src="images/logo_mobile.jpg" alt="Sugar & Spice Logo" width="243" height="49">
+    <div id="hidden_links" class="links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a class="active" href="contact.html">Contact us</a>
+      <a href="account.html">Account</a>
+      <a href="cite.html">Cite</a>
+    </div>
+    <img class="burger_menu" src="images/burger_menu.jpg" alt="Menu icon" width="61" height="49" onclick="menuFunction()">
+  </nav>
+
+  <main>
+    <button class="accordion">Business hours</button>
+    <div class="panel">
+      <ul>
+        <li>Sunday 10:00 a.m. - 4:00 p.m.</li>
+        <li>Monday <b>CLOSED</b></li>
+        <li>Tuesday 9:00 a.m - 5:00 p.m.</li>
+        <li>Wednesday 9:00 a.m - 5:00 p.m.</li>
+        <li>Thursday 9:00 a.m - 5:00 p.m.</li>
+        <li>Friday 9:00 a.m - 5:00 p.m.</li>
+        <li>Saturday 10:00 a.m. - 5:00 p.m.</li>
+      </ul>
+      <p>Please note that special orders for events may be arranged to be picked up outside regular business hours.</p>
+    </div>
+
+    <button class="accordion">Contact information</button>
+    <div class="panel">
+      <p>Come visit our store! Sugar & Spice is conveniently located on the corner of 123 Fourth St. with Main Ave.</p>
+      <ul>
+        <li>45-123 Fourth St.</li>
+        <li>V1H 3Y6 Vancouver, BC</li>
+        <li>Phone: (604) 111 - 1111</li>
+        <li>Email: inquiries@sugarnspice.ca</li>
+      </ul>
+    </div>
+    
+    <button class="accordion">Get a free quote!</button>
+    <div class="panel">
+      <p>For general questions, please stop by our store or reach us through phone or email. For a free quote on an order for an event, please fill out the form below. We will contact you within two business days.</p>
+      <form class="quoteform" action="echo_my_form.php" method="post">
+        <fieldset class="customer_info">
+          <legend>Customer Information</legend>
+          <p>
+            <label for="firstName">First name</label>
+            <input type="text" name="firstName" id="firstName" required="required" placeholder="Jane">
+          </p>
+          <p>
+            <label for="lastName">Last name</label>
+            <input type="text" name="lastName" id="lastName" required="required" placeholder="Doe">
+          </p>
+          <p>
+            <label for="customerEmail">Email</label>
+            <input type="email" name="customerEmail" id="customerEmail" required="required" placeholder="name@domain.com">
+          </p>
+          <p>
+            <label for="customerPhone">Phone</label>
+            <input type="tel" name="customerPhone" id="customerPhone" required="required" placeholder="(111) 111-1111">
+          </p>
+        </fieldset>
+  
+        <fieldset class="order_details">
+          <legend>Order Details</legend>
+          <div class="form_item">
+            <p>What types of items will you be including in your order?</p>
+            <div class="order_checkbox">
+              <div class="left_checkbox">
+                <p>
+                  <input type="checkbox" name="itemsOrder" id="cupcakeTower" value="cupcakeTower">
+                  <label for="cupcakeTower">Cupcake tower</label>
+                </p>
+                <p>
+                  <input type="checkbox" name="itemsOrder" id="tierCake" value="tierCake">
+                  <label for="tierCake">Multi tier cake</label>
+                </p>
+                <p>
+                  <input type="checkbox" name="itemsOrder" id="dessertPlatter" value="dessertPlatter">
+                  <label for="dessertPlatter">Dessert platter (assorted)</label>
+                </p>
+              </div>
+              <div class="right_checkbox">
+                <p>
+                  <input type="checkbox" name="itemsOrder" id="cupcakeBox" value="cupcakeBox">
+                  <label for="cupcakeBox">Cupcake box (contains six)</label>
+                </p>
+                <p>
+                  <input type="checkbox" name="itemsOrder" id="cookieBox" value="cookieBox">
+                  <label for="cookieBox">Cookie box (contains twelve)</label>
+                </p>
+                <p>
+                  <input type="checkbox" name="itemsOrder" id="partyTable" value="partyTable">
+                  <label for="partyTable">Party table</label>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="form_item">
+            <label for="eventType">If this order is for an event, select the event type:</label>
+            <select name="eventType" id="eventType">
+              <option value="">Pick one</option>
+              <option value="corporate">Corporate</option>
+              <option value="birthday">Birthday</option>
+              <option value="Wedding">Wedding</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form_item">
+            <label for="otherDetails">Please include any other details here:</label>
+            <textarea name="otherDetails" id="otherDetails" cols="10" rows="10" placeholder="Theme of event, preferred flavours, decoration, etc."></textarea>
+          </div>
+        </fieldset>
+  
+        <fieldset class="pickUpPayment">
+          <legend>Pick up and Payment</legend>
+          <p>Preferred service type:</p>
+          <div class="radio_buttons">
+            <p>
+              <input type="radio" name="service" id="delivery" value="delivery" required="required">
+              <label for="delivery">Delivery (extra charges may apply)</label>
+            </p>
+            <p>
+              <input type="radio" name="service" id="pickup" value="pickup" required="required">
+              <label for="pickup">Pick up (extra charges may apply if outside regular business hours)</label>
+            </p>
+            <p>
+              <input type="radio" name="service" id="catering" value="catering" required="required">
+              <label for="catering">Catering (cost based on event size and duration)</label>
+            </p>
+          </div>
+          <div class="dateTime">
+            <p>
+              <label for="pickUpDate">Service date:</label>
+              <input type="date" name="pickUpDate" id="pickUpDate" required="required">
+            </p>
+            <p>
+              <label for="pickUpTime">Time (optional):</label>
+              <input type="time" name="pickUpTime" id="pickUpTime">
+            </p>
+          </div>
+          <p>Payment method:</p>
+          <div class="radio_buttons">
+            <p>
+              <input type="radio" name="payment" id="inPerson" value="inPerson" required="required">
+              <label for="inPerson">In person at the store</label>
+            </p>
+            <p>
+              <input type="radio" name="payment" id="onlineCreditCard" value="onlineCreditCard" required="required">
+              <label for="onlineCreditCard">Online with a credit card (must create an account first)</label>
+            </p>
+          </div>
+          <p>Please note that a deposit may be required to confirm a large order.</p>
+        </fieldset>
+        <div class="quote_button">
+          <button type="submit" name="submit" id="submit">SUBMIT</button>
+        </div>
+      </form>
+    </div>    
+  </main>
+
+  <footer>
+    <p>COMP 1850 Final Project - Ana Brunner | Visit the <a href="cite.html">Cite</a> page for a full list of content attributions.</p>
+  </footer>
+</body>
+</html>

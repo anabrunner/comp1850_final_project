@@ -1,0 +1,175 @@
+/* COMP 1850 Final Project - Ana Brunner
+base.css for Final Project */
+
+/* Imports font used throughout website */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+/* Grid layout for webpage */
+body {
+  display: grid;
+  grid-template-areas:
+    "nav header"
+    "nav main"
+    "footer footer";
+  grid-template-rows: 135px 1fr minmax(40px, auto);
+  grid-template-columns: 200px 1fr;
+  height: 100vh;
+  font-family: 'Playfair Display', sans-serif;
+}
+
+header {
+  background-color: #88a3b6;
+  text-align: left;
+  font-size: 50rem;
+  padding: 20px;
+  grid-area: header;
+  display: grid;
+  align-items: center;
+  color: #e9e5df;
+  height: 135px;
+}
+
+nav {
+  grid-area: nav;
+  background-color: #88a3b6;
+}
+
+/* Hides these unless in mobile view */
+nav .logo_mobile, .burger_menu {
+  display: none;
+}
+
+.links {
+  display: block;
+}
+
+.links a {
+  display: block;
+  color: #e9e5df;
+  text-align: center;
+  font-weight: 500;
+  padding: 20px 16px;
+  font-size: 20rem;
+}
+
+.links a:hover, #hidden_links a.active {
+  background-color: #bdcbdc;
+  color: #374d62;
+}
+
+main {
+  grid-area: main;
+  padding: 20px;
+  align-self: stretch;
+}
+
+h1, h2 {
+  margin: 10px;
+}
+
+button {
+  background-color: #88a3b6;
+  color: #e9e5df;
+  font-family: 'Playfair Display', sans-serif;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px;
+  border: none;
+}
+
+button:hover {
+  background-color: #bdcbdc;
+  color: #374d62;
+}
+
+ul {
+  list-style-type: none;
+  margin: 10px;
+}
+
+img {
+  border-radius: 10px;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #e9e5df;
+  padding: 10px;
+  text-align: center;
+}
+
+/* CSS for accordions */
+.accordion {
+  background-color: #e9e5df;
+  color: #374d62;
+  cursor: pointer;
+  border-radius: 0px;
+  width: 100%;
+  text-align: left;
+  font-size: 18rem;
+  transition: 0.4s;
+}
+
+.accordion_active {
+  background-color: #bdcbdc;
+}
+
+/* Adds the plus/minus button when the accordion is collapsed or open, respectively */
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 10rem;
+  float: right;
+  margin-left: 10px;
+}
+
+.accordion_active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.panel {
+  display: none;
+  padding: 20px;
+}
+
+/* Changes when screen size is phone or tablet sized */
+@media screen and (max-width: 768px) {
+  /* Changes grid layout to fit smaller screen better */
+  body {
+    grid-template-areas:
+      "nav"
+      "header"
+      "main"
+      "footer";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;
+  }
+  
+  /* Hides the links in the nav bar */
+  .links {
+    display: none;
+  }
+
+  /* When this class is activated with the JavaScript function the links display */
+  .links.responsive {
+    display: block;
+  }
+
+  /* Hides the big logo in mobile view */
+  nav .logo {
+    display: none;
+  }
+
+  /* Displays the burger menu icon on mobile view */
+  nav .burger_menu {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  /* Also displays the smaller version of the company logo on mobile view */
+  nav .logo_mobile {
+    display: inline;
+  }
+}
